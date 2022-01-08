@@ -152,7 +152,7 @@ export default class App extends React.Component {
               )
           }
         </div>
-        <input type="button" value="Draw New 5" onClick={this.handleDrawAllNew} disabled={drawNewDisabled} />
+        {/* <input type="button" value="Draw New 5" onClick={this.handleDrawAllNew} disabled={drawNewDisabled} /> */}
       </div>
     );
   }
