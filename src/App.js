@@ -36,7 +36,6 @@ export default class App extends React.Component {
   }
 
   draw(count) {
-    // console.log("drawing")
     const deckId = this.state.deck_id;
     axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + count)
     .then(res => {
@@ -113,8 +112,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state)
-
     const drawDisabled    = (this.isDiscardPileEmpty())? true: false;
     const drawNewDisabled = (this.isGameOver())? true: false;
 
