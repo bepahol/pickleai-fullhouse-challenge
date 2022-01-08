@@ -3,7 +3,8 @@ import axios from 'axios';
 import React from 'react';
 
 const BASE_URL = "https://deckofcardsapi.com/api/deck";
-
+const HAND_SIZE     = 5;
+const CARDS_IN_DECK = 52;
 export default class App extends React.Component {
 
   state = {
@@ -11,7 +12,7 @@ export default class App extends React.Component {
     cards: [],
     discarded: [],
     numDraws: 0,
-    cardsLeft: 52,
+    cardsLeft: CARDS_IN_DECK,
     isFullHouse: false,
   }
 
@@ -22,7 +23,7 @@ export default class App extends React.Component {
         this.setState({ deck_id: deck.deck_id });
 
         const deckId = deck.deck_id;
-        this.draw(5);
+        this.draw(HAND_SIZE);
         // axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + 5)
         // .then(res => {
         //   const draw = res.data;
@@ -51,7 +52,7 @@ export default class App extends React.Component {
 
   handleDrawAllNew = event => {
     this.setState({ cards: [] })
-    this.draw(5)
+    this.draw(HAND_SIZE)
 
     // const deckId = this.state.deck_id;
     // axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + 5)
@@ -102,7 +103,7 @@ export default class App extends React.Component {
   isFullHouse() {
     const cards = this.state.cards;
 
-    if (cards.length !== 5)
+    if (cards.length !== HAND_SIZE)
       return false;
 
     let firstRank = cards[0].value;
