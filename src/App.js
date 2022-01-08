@@ -100,7 +100,7 @@ export default class App extends React.Component {
   }
 
   isGameOver() {
-    return this.state.cardsLeft === 0 || (this.state.cardsLeft + this.state.cards.length) < 5;
+    return this.state.cardsLeft === 0 || (this.state.cardsLeft + this.state.cards.length) < HAND_SIZE;
   }
 
   isDiscardPileEmpty() {
