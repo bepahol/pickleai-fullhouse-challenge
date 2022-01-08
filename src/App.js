@@ -140,6 +140,10 @@ export default class App extends React.Component {
     return this.state.discarded.length === 0;
   }
 
+  isFirstDraw() {
+    return this.state.numDraws === 1;
+  }
+
   render() {
     console.log(this.state)
 
@@ -162,6 +166,7 @@ export default class App extends React.Component {
         <div># of Draws: {this.state.numDraws}</div>
         <div># of cards left: {this.state.cardsLeft}</div>
         <input type="button" value="Draw" onClick={this.handleDraw} disabled={drawDisabled} className="button" />
+        {this.isFirstDraw() && (<div>Click a card to discard</div>)}
         <div className={status}>
           <div>{msg}</div>
           {/* {
