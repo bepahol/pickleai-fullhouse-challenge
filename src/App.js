@@ -21,50 +21,18 @@ export default class App extends React.Component {
       .then(res => {
         const deck = res.data;
         this.setState({ deck_id: deck.deck_id });
-
-        const deckId = deck.deck_id;
         this.draw(HAND_SIZE);
-        // axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + 5)
-        // .then(res => {
-        //   const draw = res.data;
-        //   this.setState({ cards: draw.cards });
-        //   this.setState({ cardsLeft: draw.remaining });
-        // })
       })   
   }
 
   handleDraw = event => {
     const discardCount = this.state.discarded.length;
     this.draw(discardCount);
-
-    // const deckId = this.state.deck_id;
-    // axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + discardCount)
-    // .then(res => {
-    //   const draw = res.data;
-    //   let currCards = this.state.cards;
-    //   this.setState({ cards: currCards.concat(draw.cards) });
-    //   this.setState({ cardsLeft: draw.remaining });
-    // })
-
-    // this.setState({ discarded: [] });
-    // this.setState({ numDraws: this.state.numDraws+1 });
   }
 
   handleDrawAllNew = event => {
     this.setState({ cards: [] })
     this.draw(HAND_SIZE)
-
-    // const deckId = this.state.deck_id;
-    // axios.get(BASE_URL +'/' + deckId + '/draw/?count=' + 5)
-    // .then(res => {
-    //   const draw = res.data;
-    //   let currCards = this.state.cards;
-    //   this.setState({ cards: currCards.concat(draw.cards) });
-    //   this.setState({ cardsLeft: draw.remaining });
-    // })
-
-    // this.setState({ discarded: [] });
-    // this.setState({ numDraws: this.state.numDraws+1 });
   }
 
   draw(count) {
@@ -87,7 +55,6 @@ export default class App extends React.Component {
 
     let discarded = this.state.discarded;
     discarded.push(code);
-    // this.setState({ discarded });
 
     const cards = this.state.cards;
     const filteredCards = cards.filter((card) => {
